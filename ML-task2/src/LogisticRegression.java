@@ -25,8 +25,7 @@ public class LogisticRegression {
 
     static ArrayList<Point> ps = new ArrayList<>();
 
-    private static void readData()
-    {
+    private static void readData()   {
         try (Scanner br = new Scanner(new File(FILE_NAME)))
         {
             for (int i = 0; i < DATA_SIZE; i++)
@@ -46,7 +45,7 @@ public class LogisticRegression {
             for (int j = 0; j < 50; j++)
             {
                 Iris t = allData.get(i * 50 + j);
-                if (i == 1)
+                if (i == 0)
                     t.ans = 1;
                 else
                     t.ans = 0;
@@ -110,7 +109,7 @@ public class LogisticRegression {
             Iris obj = testData.get(i);
 
             double ans = sigmoid(scalarMul(theta, obj.x));
-            if (ans >= rate)
+            if (ans - rate >= 0.0001)
                 results[i] = 1.0;
             else
                 results[i] = 0.0;
